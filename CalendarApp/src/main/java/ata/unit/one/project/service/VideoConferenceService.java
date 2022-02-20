@@ -3,6 +3,9 @@ package ata.unit.one.project.service;
 import ata.unit.one.project.backend.Backend;
 import ata.unit.one.project.backend.models.EventDto;
 import ata.unit.one.project.backend.models.VideoConferenceLinkDto;
+import ata.unit.one.project.conferencelink.ConferenceLinkHandler;
+import ata.unit.one.project.conferencelink.GoogleConferenceLinkHandler;
+import ata.unit.one.project.conferencelink.ZoomConferenceLinkHandler;
 import ata.unit.one.project.models.VideoConferenceLink;
 
 import java.awt.*;
@@ -57,7 +60,8 @@ public class VideoConferenceService {
     }
 
     public void joinVideoConference(String eventId) {
-
+        GoogleConferenceLinkHandler handlerGoogle = new GoogleConferenceLinkHandler();
+        ZoomConferenceLinkHandler handlerZoom = new ZoomConferenceLinkHandler();
         EventDto eventResponse = backend.getEvent(eventId);
         VideoConferenceLinkDto videoConferenceResponse = backend.getEventVideoLink(eventId);
         if (eventResponse == null || videoConferenceResponse == null) {
@@ -66,11 +70,10 @@ public class VideoConferenceService {
         try {
             if (eventResponse.getVideoConferenceProvider().equalsIgnoreCase("google")) {
                 String formattedCode = format("%s-%s-%s", videoConferenceResponse.getMeetingCode().substring(0, 3), videoConferenceResponse.getMeetingCode().substring(3, 6), videoConferenceResponse.getMeetingCode().substring(6));
-                Desktop.getDesktop().browse(new URL(format("https://meet.google.com", formattedCode)).toURI());
+                handlerGoogle.join(formattedCode);
             }
             if (eventResponse.getVideoConferenceProvider().equalsIgnoreCase("zoom")) {
-                Desktop.getDesktop().browse(new URL(format("https://zoom.us/j/%s", videoConferenceResponse.getMeetingCode())).toURI());
-            }
+                handlerZoom.join(eventId); }
         } catch (IOException | URISyntaxException e) {
             throw new IllegalArgumentException("Could not join video conference");
         }

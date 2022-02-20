@@ -27,10 +27,10 @@ public class Backend implements Serializable {
     public Backend() {
         storage = new Storage();
 
-        persons = storage.retrieve(personFileName);
-        events = storage.retrieve(eventsFileName);
-        personEvents = storage.retrieve(personEventsFileName);
-        conferenceLinks = storage.retrieve(conferenceLinksFileName);
+//        persons = storage.retrieve(personFileName);
+//        events = storage.retrieve(eventsFileName);
+//        personEvents = storage.retrieve(personEventsFileName);
+//        conferenceLinks = storage.retrieve(conferenceLinksFileName);
 
         if (events == null) {
             events = new HashMap<>();
@@ -99,7 +99,7 @@ public class Backend implements Serializable {
                 events = new ArrayList<>();
             }
             for (EventDto eventDto : ownerEvents) {
-                EventDto newEvent = copyEvent(eventDto);
+                EventDto newEvent = eventDto;
                 events.add(newEvent);
                 this.events.put(newEvent.getEventId(), newEvent);
             }

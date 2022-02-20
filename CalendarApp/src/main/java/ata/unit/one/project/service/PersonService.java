@@ -2,9 +2,12 @@ package ata.unit.one.project.service;
 
 import ata.unit.one.project.backend.Backend;
 import ata.unit.one.project.backend.models.PersonDto;
+import ata.unit.one.project.comparator.SortByPersonName;
 import ata.unit.one.project.models.Person;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class PersonService {
@@ -18,6 +21,7 @@ public class PersonService {
     public List<Person> getPersons() {
         List<PersonDto> response = backend.getPersons();
         List<Person> listPersons = new ArrayList<>();
+
         for (PersonDto personDto : response) {
             Person person = Person.builder()
                     .setPersonId(personDto.getPersonId())
@@ -25,7 +29,11 @@ public class PersonService {
                     .build();
             listPersons.add(person);
         }
-        return listPersons;
+        Comparator<Person> nameSorter = (firstPerson, secondPerson) -> firstPerson.getPersonName().compareToIgnoreCase(secondPerson.getPersonName());
+
+       Collections.sort(listPersons, nameSorter);
+
+       return listPersons;
     }
 
     public Person addPerson(String personName) {
