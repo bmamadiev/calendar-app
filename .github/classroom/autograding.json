@@ -3,7 +3,7 @@
     {
       "name": "CalendarApp Task 1 Tests",
       "setup": "",
-      "run": ".\\gradlew calendarapp-task1 --rerun-tasks",
+      "run": "./gradlew calendarapp-task1 --rerun-tasks",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -13,7 +13,7 @@
     {
       "name": "CalendarApp Task 2 Tests",
       "setup": "",
-      "run": ".\\gradlew calendarapp-task2 --rerun-tasks",
+      "run": "./gradlew calendarapp-task2 --rerun-tasks",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -23,7 +23,7 @@
     {
       "name": "CalendarApp Task 3 Tests",
       "setup": "",
-      "run": ".\\gradlew calendarapp-task3 --rerun-tasks",
+      "run": "./gradlew calendarapp-task3 --rerun-tasks",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -33,7 +33,7 @@
     {
       "name": "CalendarApp Task 4 Tests",
       "setup": "",
-      "run": ".\\gradlew calendarapp-task4 --rerun-tasks",
+      "run": "./gradlew calendarapp-task4 --rerun-tasks",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -43,7 +43,7 @@
     {
       "name": "CalendarApp Task 5 Tests",
       "setup": "",
-      "run": ".\\gradlew calendarapp-task5 --rerun-tasks",
+      "run": "./gradlew calendarapp-task5 --rerun-tasks",
       "input": "",
       "output": "",
       "comparison": "included",
